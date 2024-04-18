@@ -14,6 +14,7 @@ interface Product {
   description: string;
   base_price: number;
   icon: string;
+  title: string;
 }
 
 export default async function ProtectedPage() {
