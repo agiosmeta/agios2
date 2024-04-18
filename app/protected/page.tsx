@@ -19,7 +19,7 @@ export default async function ProtectedPage() {
   }
 
   const userEmail = user.email || '';
-  const productIds = ['PRODUCT_ID_1', 'PRODUCT_ID_2'];
+  const productIds = ['pro_01hvkkv164kpxjmaq0s9vb2r9x', 'pro_01hvcx3fcwmw146qzvfy438yzx'];
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
