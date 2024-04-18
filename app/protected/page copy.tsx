@@ -4,17 +4,6 @@ import { createClient } from "@/utils/supabase/server";
 import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
 import Header from "@/components/Header";
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import { getProducts } from "@/components/paddle";
-import Image from "next/image";
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  base_price: number;
-  icon: string;
-}
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -26,8 +15,6 @@ export default async function ProtectedPage() {
   if (!user) {
     return redirect("/login");
   }
-
-  const products = await getProducts();
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
@@ -49,24 +36,6 @@ export default async function ProtectedPage() {
         <main className="flex-1 flex flex-col gap-6">
           <h2 className="font-bold text-4xl mb-4">Next steps</h2>
           <FetchDataSteps />
-
-          <div className="mt-10 grid grid-cols-3 gap-x-16 gap-y-20">
-            {products.map((product: Product) => (
-              <Link href={`/products/${product.id}`} key={product.id}>
-                <a>
-                  <Image
-                    width={800}
-                    height={508}
-                    src={product.icon}
-                    alt={product.title}
-                  />
-                  <p>{product.name}</p>
-                  <p className="text-sm text-gray-500">{product.description}</p>
-                  <p className="text-sm mt-2">${product.base_price}</p>
-                </a>
-              </Link>
-            ))}
-          </div>
         </main>
       </div>
 
