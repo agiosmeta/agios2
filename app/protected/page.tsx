@@ -1,3 +1,5 @@
+"use client"; // Add this line at the top
+
 import React from 'react';
 import DeployButton from "@/components/DeployButton";
 import AuthButton from "@/components/AuthButton";
@@ -22,6 +24,7 @@ export default async function ProtectedPage() {
   const productIds = ['PRODUCT_ID_1', 'PRODUCT_ID_2'];
 
   return (
+
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <div className="w-full">
         <div className="py-6 font-bold bg-purple-950 text-center">
