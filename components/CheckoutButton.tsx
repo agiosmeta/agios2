@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 declare global {
   interface Window {
@@ -8,13 +8,20 @@ declare global {
 
 interface CheckoutButtonProps {
   userEmail: string;
+  productIds: string[];
 }
 
-const CheckoutButton = ({ userEmail }: CheckoutButtonProps) => {
-  const productIds = ['pro_01hvkkv164kpxjmaq0s9vb2r9x', 'pro_01hvcx3fcwmw146qzvfy438yzx']; // Replace with your actual product IDs
+const CheckoutButton = ({ userEmail, productIds }: CheckoutButtonProps) => {
+  const [paddleLoaded, setPaddleLoaded] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setPaddleLoaded(true);
+    }
+  }, []);
 
   const handleCheckout = () => {
-    if (window.Paddle) {
+    if (paddleLoaded && window.Paddle) {
       window.Paddle.Checkout.open({
         product: productIds,
         email: userEmail,

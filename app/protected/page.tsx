@@ -18,7 +18,8 @@ export default async function ProtectedPage() {
     return redirect("/login");
   }
 
-  const userEmail = user.email || ''; // Provide a default value if user.email is undefined
+  const userEmail = user.email || '';
+  const productIds = ['PRODUCT_ID_1', 'PRODUCT_ID_2'];
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
@@ -40,7 +41,7 @@ export default async function ProtectedPage() {
         <main className="flex-1 flex flex-col gap-6">
           <h2 className="font-bold text-4xl mb-4">Next steps</h2>
           <FetchDataSteps />
-          <CheckoutButton userEmail={userEmail} />
+          <CheckoutButton userEmail={userEmail} productIds={productIds} />
         </main>
       </div>
 
