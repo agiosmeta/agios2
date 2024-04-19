@@ -10,10 +10,10 @@ declare global {
 
 interface CheckoutButtonProps {
   userEmail: string;
-  productIds: string[];
+  productId: string;
 }
 
-const CheckoutButton = ({ userEmail, productIds }: CheckoutButtonProps) => {
+const CheckoutButton = ({ userEmail, productId }: CheckoutButtonProps) => {
   const [paddleLoaded, setPaddleLoaded] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const CheckoutButton = ({ userEmail, productIds }: CheckoutButtonProps) => {
   const handleCheckout = () => {
     if (paddleLoaded && window.Paddle) {
       window.Paddle.Checkout.open({
-        product: productIds,
+        product: productId,
         email: userEmail,
         // Add any other options required by Paddle.js
       });
