@@ -1,9 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-// components/AuthButton.tsx
-import { signOut } from "@/utils/supabase/actions";
-
 
 export default async function AuthButton() {
   const supabase = createClient();
